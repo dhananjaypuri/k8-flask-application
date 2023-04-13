@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8-flask-webapp
+  labels:
+    app: k8-flask-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8-flask-webapp
+  template:
+    metadata:
+      labels:
+        app: k8-flask-webapp
+    spec:
+      containers:
+        - image: dhananjaypuri/cpumemutilsflask:latest
+          name: flask-webapp
+          ports:
+            - containerPort: 5000
